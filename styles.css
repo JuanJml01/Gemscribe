@@ -32,6 +32,19 @@
   max-width: 85%;
   word-wrap: break-word;
   line-height: 1.5;
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Slower and more bouncy ease */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95); /* Increased movement and slight scale */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .writer-message-user {
@@ -157,10 +170,14 @@
 .writer-toolbar-container .button:hover {
   background-color: var(--background-modifier-hover);
   border-color: var(--interactive-accent);
+  transform: translateY(-5px) scale(1.03) rotate(1deg); /* More pronounced lift, scale, and slight rotation */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Even more prominent shadow */
 }
 
 .writer-toolbar-container .button:active {
   background-color: var(--background-modifier-active);
+  transform: translateY(-1px) scale(0.98); /* "Pressed" effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow for pressed state */
 }
 
 /* Styles for StatusBarComponent */

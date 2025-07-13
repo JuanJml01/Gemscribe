@@ -60,9 +60,13 @@ export class WriterView extends ItemView {
     this.messagesContainer.empty();
     const messages = this.messagesModel.getMessages();
     messages.forEach(message => {
-      this.messagesContainer.appendChild(createMessageElement(message, (content) => {
-        this.contentController.updateActiveFileContent(content);
-      }));
+      this.messagesContainer.appendChild(createMessageElement(
+        message,
+        (content) => { /* No action on message click for now, could be added later */ },
+        (content) => {
+          this.contentController.updateActiveFileContent(content);
+        }
+      ));
     });
     this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight; // Scroll to bottom
   }
