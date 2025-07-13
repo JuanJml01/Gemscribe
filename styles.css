@@ -62,11 +62,12 @@
 }
 
 .writer-input-container {
+  width: 100%;
   padding-top: 10px;
   border-top: 1px solid var(--background-modifier-border);
 }
 
-.writer-input-container textarea.text-area {
+.writer-input-container textarea {
   width: 100%;
   min-height: 60px;
   padding: 10px;

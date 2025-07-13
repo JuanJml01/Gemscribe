@@ -1,7 +1,6 @@
 import { ButtonComponent } from 'obsidian';
 import { MessageController } from '../../core/controller/messageController';
 import { MessagesModel } from '../../core/messages/MessagesModel';
-import { MessageParser } from '../../core/messages/MessageParser';
 
 export class ToolbarComponent {
   private containerEl: HTMLElement;
@@ -24,23 +23,8 @@ export class ToolbarComponent {
       .setButtonText('Clear Chat')
       .onClick(() => {
         this.messagesModel.clearMessages();
-        // TODO: Trigger UI update
+        this.messageController.updateView();
       });
 
-    new ButtonComponent(this.containerEl)
-      .setButtonText('Export Chat (Markdown)')
-      .onClick(() => {
-        const markdown = MessageParser.toMarkdown(this.messagesModel.getMessages());
-        navigator.clipboard.writeText(markdown);
-        // TODO: Show success message
-      });
-
-    new ButtonComponent(this.containerEl)
-      .setButtonText('Export Chat (JSON)')
-      .onClick(() => {
-        const json = MessageParser.toJson(this.messagesModel.getMessages());
-        navigator.clipboard.writeText(json);
-        // TODO: Show success message
-      });
   }
 }

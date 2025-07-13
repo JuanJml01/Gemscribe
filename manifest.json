@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
+	"id": "Gemscribe",
+	"name": "Gemscribe",
+	"version": "0.5.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
+	"description": "Integra la IA de Google Gemini directamente en Obsidian. Simplemente dale una instrucción a tu nota (como 'resume este texto' o 'mejora la redacción') y observa cómo se transforma al instante.",
+	"author": "JuanJMl01",
+	"authorUrl": "https://github.com/JuanJml01",
 	"fundingUrl": "https://obsidian.md/pricing",
 	"isDesktopOnly": false
 }

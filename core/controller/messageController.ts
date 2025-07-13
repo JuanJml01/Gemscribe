@@ -55,4 +55,8 @@ export class MessageController {
   rehydrateFromHistory() {
     // TODO: Implement
   }
+
+  updateView() {
+    this.uiController.renderMessages();
+  }
 }
