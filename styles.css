@@ -1,8 +1,173 @@
-/*
+/* Base styles for the Writer Obsidian Plugin */
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.writer-view-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  font-family: var(--font-interface);
+}
 
-If your plugin does not need CSS, delete this file.
+.writer-toolbar-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  margin-bottom: 10px;
+}
 
-*/
+.writer-messages-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px; /* For scrollbar */
+  margin-bottom: 10px;
+}
+
+.writer-message {
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  max-width: 85%;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
+.writer-message-user {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  align-self: flex-end;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.writer-message-assistant {
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  align-self: flex-start;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+}
+
+.writer-message-role {
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.writer-message-content {
+  font-size: 0.95em;
+}
+
+.writer-input-container {
+  padding-top: 10px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.writer-input-container textarea.text-area {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  font-family: var(--font-interface);
+  resize: vertical;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.writer-input-container textarea.text-area:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px var(--interactive-accent-hover);
+}
+
+.writer-loading-spinner {
+  text-align: center;
+  padding: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.writer-error-banner {
+  background-color: var(--background-modifier-error);
+  color: var(--text-error);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Styles for SettingTab */
+.writer-setting-tab .setting-item {
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding: 15px 0;
+}
+
+.writer-setting-tab .setting-item:last-child {
+  border-bottom: none;
+}
+
+.writer-setting-tab .setting-item-name {
+  font-weight: bold;
+  color: var(--text-normal);
+}
+
+.writer-setting-tab .setting-item-description {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin-top: 5px;
+}
+
+.writer-setting-tab .setting-item-control input[type="text"],
+.writer-setting-tab .setting-item-control select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  font-family: var(--font-interface);
+}
+
+.writer-setting-tab .setting-item-control input[type="text"]:focus,
+.writer-setting-tab .setting-item-control select:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px var(--interactive-accent-hover);
+}
+
+/* Styles for ToolbarComponent buttons */
+.writer-toolbar-container .button {
+  background-color: var(--background-modifier-form);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.writer-toolbar-container .button:hover {
+  background-color: var(--background-modifier-hover);
+  border-color: var(--interactive-accent);
+}
+
+.writer-toolbar-container .button:active {
+  background-color: var(--background-modifier-active);
+}
+
+/* Styles for StatusBarComponent */
+.status-bar-item.writer-status-bar {
+  padding: 5px 10px;
+  background-color: var(--background-secondary);
+  border-radius: 6px;
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin-left: 10px;
+}

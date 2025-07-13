@@ -9,7 +9,7 @@ import { UiController } from './core/controller/uiController';
 import { MessagesModel } from './core/messages/MessagesModel';
 import { StatusBarComponent } from './gui/component/statusBar';
 
-export default class MyPlugin extends Plugin {
+export class WriterPlugin extends Plugin {
   settings: Settings;
   messageController: MessageController;
   uiController: UiController;
@@ -19,8 +19,6 @@ export default class MyPlugin extends Plugin {
 
   async onload() {
     this.settings = await loadSettings(this);
-    const cssContent = await this.app.vault.adapter.read(this.manifest.dir + "/styles.css");
-    this.app.workspace.containerEl.createEl('style', { text: cssContent });
 
     this.messagesModel = new MessagesModel();
     this.contentController = new ContentController(this.app);
