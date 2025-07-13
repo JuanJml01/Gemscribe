@@ -36,7 +36,7 @@ export default class MyPlugin extends Plugin {
     this.registerView(
       VIEW_TYPE_WRITER,
       (leaf) => {
-        const view = new WriterView(leaf, this.messagesModel, this.messageController);
+        const view = new WriterView(leaf, this.messagesModel, this.messageController, this.contentController);
         this.uiController.setView(view);
         return view;
       }

@@ -4,21 +4,24 @@ import { createMessageElement } from './messages';
 import { InputComponent } from './input';
 import { MessageController } from '../../core/controller/messageController';
 import { ToolbarComponent } from './toolbar';
+import { ContentController } from '../../core/controller/contentController';
 
 export const VIEW_TYPE_WRITER = 'writer-view';
 
 export class WriterView extends ItemView {
   private messagesModel: MessagesModel;
   private messageController: MessageController;
+  private contentController: ContentController; // Add contentController
   private messagesContainer: HTMLElement;
   private inputComponent: InputComponent;
   private loadingEl: HTMLElement;
   private errorBanner: HTMLElement;
 
-  constructor(leaf: WorkspaceLeaf, messagesModel: MessagesModel, messageController: MessageController) {
+  constructor(leaf: WorkspaceLeaf, messagesModel: MessagesModel, messageController: MessageController, contentController: ContentController) {
     super(leaf);
     this.messagesModel = messagesModel;
     this.messageController = messageController;
+    this.contentController = contentController; // Initialize contentController
   }
 
   getViewType() {
@@ -57,7 +60,9 @@ export class WriterView extends ItemView {
     this.messagesContainer.empty();
     const messages = this.messagesModel.getMessages();
     messages.forEach(message => {
-      this.messagesContainer.appendChild(createMessageElement(message));
+      this.messagesContainer.appendChild(createMessageElement(message, (content) => {
+        this.contentController.updateActiveFileContent(content);
+      }));
     });
     this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight; // Scroll to bottom
   }
