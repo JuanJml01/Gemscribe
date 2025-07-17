@@ -19,8 +19,12 @@ export default class MyPlugin extends Plugin {
 
   async onload() {
     this.settings = await loadSettings(this);
-    const cssContent = await this.app.vault.adapter.read(this.manifest.dir + "/styles.css");
-    this.app.workspace.containerEl.createEl('style', { text: cssContent });
+    try {
+      const cssContent = await this.app.vault.adapter.read(this.manifest.dir + "/styles.css");
+      this.app.workspace.containerEl.createEl('style', { text: cssContent });
+    } catch (e) {
+      console.error("Failed to load styles.css:", e);
+    }
 
     this.messagesModel = new MessagesModel();
     this.contentController = new ContentController(this.app);
